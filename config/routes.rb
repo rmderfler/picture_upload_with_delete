@@ -17,8 +17,4 @@ Rails.application.routes.draw do
     resources :photos, :except =>[:edit, :update]
   end
   
-
-  
-
- 
 end
