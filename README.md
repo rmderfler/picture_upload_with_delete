@@ -6,7 +6,7 @@ Ruby on Rails app.
 
 *CRUD:* users, 'photos'.
 
-Users can upload, view, and delete, their images.  They should not be able to view others' images.
+Users can upload, view, and delete, their images.  They should not be able to view others' images.  User authenication/login employed.
 
 ###Working online [here](http://picture-upload-with-delete.herokuapp.com/)
 
