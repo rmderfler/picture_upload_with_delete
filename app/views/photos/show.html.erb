@@ -1,2 +1,4 @@
-
-<%= image_tag @photo.photo.url(:medium) %>
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= image_tag photo.photo.url(:medium) %></td>
+<% end %>

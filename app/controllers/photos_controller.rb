@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @photo = Photo.find(params[:id])
+    @photos = Photo.where(:user_id => @user.id)
   end
 
   def create
@@ -49,6 +49,6 @@ class PhotosController < ApplicationController
 
   private
     def photo_params
-      params.require(:photo).permit(:name, :photo, :user_id)
+      params.require(:photo).permit(:photo, :user_id)
     end
 end
