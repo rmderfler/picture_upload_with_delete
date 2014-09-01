@@ -43,4 +43,17 @@ describe "logout" do
   end
 end
 
+describe "upload a photo page" do
+  it "displays 'Your photos' after upload" do
+    visit '/login'
+    user = User.create(:name => 'G', :password => 'password')
+    fill_in 'name', :with => 'G'
+    fill_in 'Password', :with => 'password'
+    click_button 'Log in'
+    visit '/'
+    click_on 'Add photo'
+    expect(page).to have_content 'Your photos'
+  end
+end
+
 end
