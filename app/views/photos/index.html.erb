@@ -1,11 +1,11 @@
 <h1>Your photos</h1>
 
-  <tbody><% if current_user.id == @user.id %>
-    <% @user.photos.each do |photo| %>
-      <tr>
-        <td><%= image_tag photo.photo.url(:medium) %>
-          <%= link_to 'Delete', user_photo_path(@user, photo), :data => {:method => "delete"} %> </td>
-<% end %>
+  <tbody>
+    <% if current_user.id == @user.id %>
+      <% @user.photos.each do |photo| %>
+        <tr><td><%= image_tag photo.photo.url(:medium) %>
+        <%= link_to 'Delete', user_photo_path(@user, photo), :data => {:method => "delete"} %> </td></tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
