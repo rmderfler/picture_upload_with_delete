@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :sessions do
     resources :users, :except =>[:index]
   end
+
+  resources :users do
+    resources :photos
+  end
   
 
   
