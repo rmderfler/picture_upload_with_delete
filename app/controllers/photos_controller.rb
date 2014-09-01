@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     if @photo.save
       session[:photo_id] = @photo.id
       flash[:notice] = "photo was added"
-      redirect_to photos_path(@user)
+      redirect_to user_photos_path
     else
       render 'new'
     end
