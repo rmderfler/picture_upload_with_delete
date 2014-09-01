@@ -9,12 +9,17 @@
   <nav class="navbar navbar-inverse fixed navbar-custom" role="navigation">
     <div class="container">
       <ul class="nav navbar-nav title">
-         
-          
-            <li><%= link_to "Log out", logout_path %></li>
+       <% if current_user %>
+              <li><%= link_to "Log out", logout_path %></li>
+            
+              <li><%= link_to "Add an avatar/edit user", edit_user_path(current_user) %></li>
+              
+              <li><a>Logged in as <%= current_user.name %></a></li>
+              <li><%= image_tag current_user.avatar(:thumb) %>
+          <% else %>
             <li><%= link_to "Sign Up", signup_path %></li>
             <li><%= link_to "Log In", login_path %></li>
-         
+          <% end %>
       </ul>
     </div>
   </nav>
@@ -22,7 +27,7 @@
   <div class="container">
     <%= flash[:notice] %>
     <%= yield %><br/>
-   
+    <%= debug(params) %>
   </div>
 </body>
 </html>
