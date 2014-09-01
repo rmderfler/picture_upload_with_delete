@@ -4,7 +4,7 @@
     <% @user.photos.each do |photo| %>
       <tr>
         <td><%= image_tag photo.photo.url(:medium) %>
-          <%= link_to 'Delete', user_photo_path(photo, @user), :data => {:method => "delete"} %> </td>
+          <%= link_to 'Delete', user_photo_path(@user, photo), :data => {:method => "delete"} %> </td>
 
     <% end %>
   </tbody>
