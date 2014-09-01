@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def authorize
+    	p current_user.id
       redirect_to login_url, alert: "Not authorized!" if (current_user.id != (session[:user_id]))
     end
 end

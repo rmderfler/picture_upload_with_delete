@@ -8,3 +8,4 @@
 </p>
 
 <%= link_to 'Edit', edit_session_user_path(session, @user) %> |
+<%= link_to 'Delete', session_user_path(session, @user), :data => {:method => "delete"} %> 
