@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @user = User.find(params[:user_id])
     @photo = Photo.new
   end
 
@@ -14,7 +15,6 @@ class PhotosController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    # @photo = Photo.new(photo_params)
     @photo = @user.photos.new(photo_params)
     if @photo.save
       session[:photo_id] = @photo.id
@@ -50,6 +50,5 @@ class PhotosController < ApplicationController
   private
     def photo_params
       params.require(:photo).permit(:name, :photo, :user_id)
-      # params.require(:user).permit(:user_id)
     end
 end

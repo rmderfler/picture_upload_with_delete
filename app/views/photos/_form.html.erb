@@ -1,0 +1,10 @@
+<%= form_for [@user, @photo], :url => user_photos_path, :html => { :multipart => true } do |f| %>
+  <div class ="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <p>
+    <%= f.file_field :photo %>
+  </p>
+  <p><%= f.submit "Submit", :class => "btn btn-warning btn-xs" %></p>
+<% end %>
