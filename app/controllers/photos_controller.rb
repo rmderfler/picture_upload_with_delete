@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @photos = Photo.where(:user_id => @user.id)
+    @photos = Photo.find(params[:id])
   end
 
   def create
@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     if @photo.save
       session[:photo_id] = @photo.id
       flash[:notice] = "photo was added"
-      redirect_to user_photos_path
+      redirect_to user_photo_path(@user, @photo)
     else
       render 'new'
     end
@@ -40,13 +40,13 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:user_id])
-    @user = User.find(params[:id])
+    @photo = Photo.find(params[:id])
+    @user = User.find(params[:user_id])
     if current_user.id == @user.id
       
       if @photo.destroy
         flash[:notice] = "The photo was deleted."
-        redirect_to user_photos_path
+        redirect_to user_photo_path
       end
     end
   end

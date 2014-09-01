@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   resources :users, :except =>[:index, :show]
   resources :sessions
-  
+  resources :photos, :only =>[:index]
+
   resources :sessions do
     resources :users, :except =>[:index]
   end

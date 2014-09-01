@@ -11,7 +11,7 @@
       <ul class="nav navbar-nav title">
        <% if current_user %>
               <li><%= link_to "Log out", logout_path %></li>
-            
+              <li><%= link_to "All photos", photos_path %></li>
               <li><%= link_to "Add an avatar/edit user", edit_session_user_path(session, current_user) %></li>
               
               <li><a>Logged in as <%= current_user.name %></a></li>
