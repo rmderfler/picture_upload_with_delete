@@ -1,11 +1,10 @@
-RawBlameHistory   
-<p id="notice"><%= notice %></p>
+   
+
 
 <p>
   <strong>Name:</strong>
-  <%= @user.name %><br/>
-  <%= image_tag @user.avatar.url(:thumb) %>
+  <%= current_user.name %><br/>
+  <%= image_tag current_user.avatar.url(:thumb) %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit', edit_session_user_path(session, @user) %> |

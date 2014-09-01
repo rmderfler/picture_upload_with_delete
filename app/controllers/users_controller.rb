@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorize, only: [:edit, :update, :show, :delete]
+
   def index
     @users = User.all
   end
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "User was added"
-      redirect_to users_path
+      redirect_to session_user_path(session, @user)
     else
       render 'new'
     end
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       @user.update_attribute(:avatar, params[:user][:avatar])
       flash[:notice] = "User updated."
-      redirect_to users_path(@user)
+      redirect_to session_user_path(session, @user)
     else
       render 'edit'
     end
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:notice] = "The user was deleted."
-      redirect_to users_path
+      redirect_to root_path
     end
   end
 
