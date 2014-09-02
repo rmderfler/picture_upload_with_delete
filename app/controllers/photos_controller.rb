@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
-    if current_user.id == @user.id
+    if @current_user.id == @user.id
       
       if @photo.destroy
         flash[:notice] = "The photo was deleted."

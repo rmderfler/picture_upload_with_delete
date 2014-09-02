@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authorize, only: [:edit, :update, :show]
 
   def index
-    @users = User.all
+      @users = User.all
   end
 
   def new
@@ -30,20 +30,20 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if current_user.id == @user.id
+    if @current_user.id == @user.id
       if @user.update(user_params)
         @user.update_attribute(:avatar, params[:user][:avatar])
         flash[:notice] = "User updated."
         redirect_to session_user_path(session, @user)
       else
-      render 'edit'
+        render 'edit'
       end
     end
   end
 
   def destroy
     @user = User.find(params[:id])
-    if current_user.id == @user.id
+    if @current_user.id == @user.id
       if @user.destroy
         current_user.destroy
         session[:user_id] = nil
